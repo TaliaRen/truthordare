@@ -1,11 +1,11 @@
 {
   "headers": [
     {
-      "source": "/(.*)\\.svg",
+      "source": "/Icon/(.*)",
       "headers": [
         {
           "key": "Content-Type",
-          "value": "image/svg+xml"
+          "value": "image/svg+xml; charset=utf-8"
         }
       ]
     }
