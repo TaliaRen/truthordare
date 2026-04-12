@@ -631,11 +631,11 @@
       <div class="toggle-row">
         <div class="toggle-track">
           <button id="tog-t" class="tog-btn tog-truth on" onclick="switchType('truth')">
-            <img id="tog-t-img" src="/Icon/Truth.svg" alt="truth" />
+            <img id="tog-t-img" src="/Icon/Truth.svg" alt="truth" style="filter: brightness(0) invert(1);" />
             TRUTH
           </button>
           <button id="tog-d" class="tog-btn tog-dare" onclick="switchType('dare')">
-            <img id="tog-d-img" src="/Icon/dare-subtle.svg" alt="dare" />
+            <img id="tog-d-img" src="/Icon/Dare.svg" alt="dare" style="filter: brightness(0) invert(1) brightness(0.35);" />
             DARE
           </button>
         </div>
@@ -662,10 +662,10 @@
 <script>
   /* ── ICON URLS for dynamic toggle ── */
   const ICON = {
-    heart_on:  '/Icon/Truth.svg',        // active (white, filtered)
-    heart_off: '/Icon/truth-subtle.svg', // inactive (grey)
-    fire_on:   '/Icon/Dare.svg',         // active (white, filtered)
-    fire_off:  '/Icon/dare-subtle.svg',  // inactive (grey)
+    heart_on:  '/Icon/Truth.svg',  // used for both states
+    heart_off: '/Icon/Truth.svg',
+    fire_on:   '/Icon/Dare.svg',   // used for both states
+    fire_off:  '/Icon/Dare.svg',
     reload:    '/Icon/Reload.svg',
   };
 
@@ -1376,14 +1376,14 @@
     document.getElementById('tog-t').className = 'tog-btn tog-truth' + (isT ? ' on' : '');
     document.getElementById('tog-d').className = 'tog-btn tog-dare'  + (isT ? '' : ' on');
 
-    /* toggle icons — swap active/inactive image + force white filter on active */
+    /* toggle icons — same SVG for both states, CSS filter controls color */
     const tImg = document.getElementById('tog-t-img');
     const dImg = document.getElementById('tog-d-img');
-    // active icon → white SVG + invert filter; inactive → subtle grey SVG, no filter
-    tImg.src = isT ? ICON.heart_on  : ICON.heart_off;
-    dImg.src = isT ? ICON.fire_off  : ICON.fire_on;
-    tImg.style.filter = isT ? 'brightness(0) invert(1)' : 'none';
-    dImg.style.filter = isT ? 'none' : 'brightness(0) invert(1)';
+    tImg.src = ICON.heart_on;
+    dImg.src = ICON.fire_on;
+    // active → white (brightness(0) invert(1)); inactive → grey #595C5D (brightness(0) invert(1) brightness(0.35))
+    tImg.style.filter = isT ? 'brightness(0) invert(1)' : 'brightness(0) invert(1) brightness(0.35)';
+    dImg.style.filter = isT ? 'brightness(0) invert(1) brightness(0.35)' : 'brightness(0) invert(1)';
   }
 
   /* ── COMING SOON SHEET ── */
