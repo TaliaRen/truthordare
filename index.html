@@ -403,7 +403,6 @@
     .tog-btn img { width: 16px; height: 16px; display: block; flex-shrink: 0; }
     .tog-btn.tog-truth.on { background: #004be2; color: #ffffff; }
     .tog-btn.tog-dare.on  { background: #b41924; color: #ffffff; }
-    .tog-btn.on img { filter: brightness(0) invert(1); }
 
     /* ═══════════════════════════════════════
        HISTORY "COMING SOON" SHEET
@@ -1380,10 +1379,11 @@
     /* toggle icons — swap active/inactive image + force white filter on active */
     const tImg = document.getElementById('tog-t-img');
     const dImg = document.getElementById('tog-d-img');
+    // active icon → white SVG + invert filter; inactive → subtle grey SVG, no filter
     tImg.src = isT ? ICON.heart_on  : ICON.heart_off;
     dImg.src = isT ? ICON.fire_off  : ICON.fire_on;
-    tImg.style.filter = isT ? 'brightness(0) invert(1)' : '';
-    dImg.style.filter = isT ? '' : 'brightness(0) invert(1)';
+    tImg.style.filter = isT ? 'brightness(0) invert(1)' : 'none';
+    dImg.style.filter = isT ? 'none' : 'brightness(0) invert(1)';
   }
 
   /* ── COMING SOON SHEET ── */
