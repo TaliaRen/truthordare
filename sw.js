@@ -1,5 +1,5 @@
-const CACHE = 'truthly-v1';
-const ASSETS = ['/', '/index.html', '/icon-192.png', '/icon-512.png'];
+const CACHE = 'truthly-v2';
+const ASSETS = ['/', '/index.html', '/icon-192.png', '/icon-512.png', '/icon-180.png'];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS)));
